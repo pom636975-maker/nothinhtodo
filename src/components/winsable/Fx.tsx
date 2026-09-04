@@ -149,7 +149,7 @@ export function Seal({ className = "" }: { className?: string }) {
   return (
     <span
       aria-hidden="true"
-      className={`pointer-events-none relative inline-flex items-center justify-center ${className}`}
+      className={`pointer-events-none inline-flex items-center justify-center ${className}`}
     >
       <svg viewBox="0 0 120 120" className="seal-spin size-full">
         <defs>
@@ -165,7 +165,6 @@ export function Seal({ className = "" }: { className?: string }) {
           </textPath>
         </text>
       </svg>
-      <span className="absolute size-2 rounded-full bg-accent" />
     </span>
   );
 }

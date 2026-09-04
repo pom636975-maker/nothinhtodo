@@ -750,7 +750,7 @@ export function FinalCta() {
         </Reveal>
         <Reveal delay={160}>
           <div className="relative mt-12 flex justify-center">
-            <Seal className="absolute -top-16 right-2 size-28 text-ink/25 md:right-16 md:size-32" />
+            <Seal className="absolute top-1/2 right-4 size-24 -translate-y-1/2 text-ink/30 md:right-24 md:size-28" />
             <Magnetic strength={0.28}>
               <CtaLink href="mailto:hello@winsable.com" variant="solid" className="px-8 py-4 text-base">
                 Start a Case
