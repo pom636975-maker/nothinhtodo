@@ -28,12 +28,12 @@ export function IntroCurtain() {
     window.addEventListener("scroll", pin);
 
     document.documentElement.style.overflow = "hidden";
-    const lift = window.setTimeout(() => setState("done"), 1150);
+    const lift = window.setTimeout(() => setState("done"), 950);
     const unlock = window.setTimeout(() => {
       window.removeEventListener("scroll", pin);
       window.scrollTo(0, 0);
       document.documentElement.style.overflow = "";
-    }, 1750);
+    }, 1450);
     return () => {
       window.clearTimeout(lift);
       window.clearTimeout(unlock);
