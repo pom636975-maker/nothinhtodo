@@ -143,3 +143,29 @@ export function Spotlight() {
     />
   );
 }
+
+/** Slowly rotating circular seal — editorial flourish. */
+export function Seal({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`pointer-events-none inline-flex items-center justify-center ${className}`}
+    >
+      <svg viewBox="0 0 120 120" className="seal-spin size-full">
+        <defs>
+          <path
+            id="seal-path"
+            d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"
+            fill="none"
+          />
+        </defs>
+        <text className="fill-current text-[10.5px] font-semibold tracking-[0.32em] uppercase">
+          <textPath href="#seal-path">
+            Clarity before claims • Organize • Prepare • Submit •
+          </textPath>
+        </text>
+      </svg>
+      <span className="absolute size-2 rounded-full bg-accent" />
+    </span>
+  );
+}
