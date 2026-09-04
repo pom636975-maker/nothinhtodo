@@ -24,15 +24,30 @@ const headline: { text: string; mark?: boolean; br?: boolean }[] = [
   { text: "matters." },
 ];
 
+const rotating = ["account recovery", "disabled accounts", "impersonation", "copyright", "platform support"];
+
 export function Hero() {
   const [ready, setReady] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [active, setActive] = useState(0);
+  const [word, setWord] = useState(0);
   const stackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const id = window.setTimeout(() => setReady(true), 80);
     return () => window.clearTimeout(id);
   }, []);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const a = window.setInterval(() => setActive((v) => (v + 1) % heroCards.length), 2200);
+    const b = window.setInterval(() => setWord((v) => (v + 1) % rotating.length), 2400);
+    return () => {
+      window.clearInterval(a);
+      window.clearInterval(b);
+    };
+  }, []);
+
 
   useEffect(() => {
     const el = stackRef.current;
