@@ -35,7 +35,10 @@ export function CtaLink({
 
   return (
     <a href={href} className={`${base} ${styles} ${className}`}>
-      {children}
+      <span className="swap-label">
+        <span>{children}</span>
+        <span aria-hidden="true">{children}</span>
+      </span>
       <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );

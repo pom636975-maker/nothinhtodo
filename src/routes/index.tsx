@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/winsable/Nav";
 import { CornerMeta, ScrollProgress } from "@/components/winsable/Chrome";
+import { Boundaries, Coverage } from "@/components/winsable/Extras";
 import {
   About,
   Faq,
@@ -63,8 +64,10 @@ function Index() {
         <Services />
         <TextBand />
         <Process />
+        <Coverage />
         <FeaturedScenario />
         <Philosophy />
+        <Boundaries />
         <About />
         <Faq />
         <FinalCta />
