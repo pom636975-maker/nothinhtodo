@@ -81,6 +81,8 @@ function Index() {
       </main>
       <Footer />
       <CornerMeta />
+      <StickyCta />
+
     </div>
   );
 }
