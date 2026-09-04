@@ -118,16 +118,14 @@ export function Hero() {
               <p className="mt-6 flex items-center gap-2 text-sm font-medium tracking-[0.04em] text-muted-foreground">
                 <span className="inline-block size-1.5 rounded-full bg-accent" aria-hidden="true" />
                 Assisting with
-                <span className="rotator relative inline-block h-5 overflow-hidden align-middle">
+                <span className="relative inline-grid h-5 overflow-hidden align-middle">
                   {rotating.map((r, i) => (
                     <span
                       key={r}
-                      className="block text-ink transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="col-start-1 row-start-1 block whitespace-nowrap text-ink transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       style={{
                         transform: `translateY(${(i - word) * 100}%)`,
                         opacity: i === word ? 1 : 0,
-                        position: i === 0 ? "relative" : "absolute",
-                        inset: i === 0 ? undefined : 0,
                       }}
                     >
                       {r}
