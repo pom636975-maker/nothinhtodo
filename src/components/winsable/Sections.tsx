@@ -6,10 +6,10 @@ import { Reveal } from "./Reveal";
 
 const heroCards = [
   { label: "ACCOUNT RECOVERY", stage: "Problem", rot: "-4deg", x: "-1rem", y: "0rem", z: 5 },
-  { label: "DISABLED ACCOUNT", stage: "Review", rot: "-1.5deg", x: "0.75rem", y: "3.6rem", z: 4 },
-  { label: "IMPERSONATION", stage: "Review", rot: "1.5deg", x: "2.5rem", y: "7.2rem", z: 3 },
-  { label: "COPYRIGHT", stage: "Prepare", rot: "4deg", x: "4.25rem", y: "10.8rem", z: 2 },
-  { label: "PLATFORM SUPPORT", stage: "Submit", rot: "7deg", x: "6rem", y: "14.4rem", z: 1 },
+  { label: "DISABLED ACCOUNT", stage: "Review", rot: "-1.5deg", x: "0.75rem", y: "5.3rem", z: 4 },
+  { label: "IMPERSONATION", stage: "Review", rot: "1.5deg", x: "2.5rem", y: "10.6rem", z: 3 },
+  { label: "COPYRIGHT", stage: "Prepare", rot: "4deg", x: "4.25rem", y: "15.9rem", z: 2 },
+  { label: "PLATFORM SUPPORT", stage: "Submit", rot: "7deg", x: "6rem", y: "21.2rem", z: 1 },
 ];
 
 const flow = ["Problem", "Review", "Prepare", "Submit"];
@@ -81,7 +81,7 @@ export function Hero() {
           {/* Fanned case-card composition */}
           <div className="lg:col-span-5">
             <Reveal delay={260}>
-              <div className="group relative h-[27rem] sm:h-[29rem]">
+              <div className="group relative h-[32rem] sm:h-[34rem]">
                 {heroCards.map((c, i) => (
                   <div
                     key={c.label}
