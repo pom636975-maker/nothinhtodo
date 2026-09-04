@@ -59,10 +59,12 @@ function Index() {
         <Hero />
         <PlatformStrip />
         <Services />
+        <TextBand />
         <Process />
         <FeaturedScenario />
         <Philosophy />
         <About />
+        <Faq />
         <FinalCta />
       </main>
       <Footer />
