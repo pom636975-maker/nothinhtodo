@@ -14,10 +14,52 @@ const heroCards = [
 
 const flow = ["Problem", "Review", "Prepare", "Submit"];
 
+const headline: { text: string; mark?: boolean; br?: boolean }[] = [
+  { text: "When" },
+  { text: "the" },
+  { text: "platform", br: true },
+  { text: "says" },
+  { text: "no," },
+  { text: "clarity", mark: true, br: true },
+  { text: "matters." },
+];
+
 export function Hero() {
+  const [ready, setReady] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const stackRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setReady(true), 80);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  useEffect(() => {
+    const el = stackRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    const onMove = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      setTilt({
+        x: ((e.clientX - (r.left + r.width / 2)) / r.width) * 2,
+        y: ((e.clientY - (r.top + r.height / 2)) / r.height) * 2,
+      });
+    };
+    const onLeave = () => setTilt({ x: 0, y: 0 });
+
+    el.addEventListener("pointermove", onMove);
+    el.addEventListener("pointerleave", onLeave);
+    return () => {
+      el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
+
   return (
     <section id="top" className="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28">
-      <span className="glow-accent -top-40 -left-32 h-[26rem] w-[26rem] opacity-40" />
+      <span className="glow-accent float-slow -top-40 -left-32 h-[26rem] w-[26rem] opacity-40" />
       <span className="glow-accent top-24 right-[-10rem] h-[22rem] w-[22rem] opacity-25" />
 
       <div className="shell relative">
@@ -34,16 +76,21 @@ export function Hero() {
               </span>
             </Reveal>
 
-            <Reveal delay={80}>
-              <h1 className="display mt-8 text-[clamp(2.9rem,8.4vw,6.6rem)]">
-                When the platform
-                <br />
-                says no,{" "}
-                <span className="mark-highlight italic">clarity</span>
-                <br />
-                matters.
-              </h1>
-            </Reveal>
+            <h1 className="display mt-8 text-[clamp(2.9rem,8.4vw,6.6rem)]" data-shown={ready}>
+              {headline.map((w, i) => (
+                <Fragment key={w.text}>
+                  <span className="word-rise mr-[0.22em]">
+                    <span
+                      style={{ transitionDelay: `${120 + i * 90}ms` }}
+                      className={w.mark ? "mark-highlight italic" : ""}
+                    >
+                      {w.text}
+                    </span>
+                  </span>
+                  {w.br && <br />}
+                </Fragment>
+              ))}
+            </h1>
 
             <Reveal delay={160}>
               <p className="mt-9 max-w-lg text-lg leading-relaxed text-muted-foreground">
@@ -71,25 +118,43 @@ export function Hero() {
                       </span>
                       <span className="text-sm font-medium">{f}</span>
                     </span>
-                    {i < flow.length - 1 && <span className="h-px w-6 bg-rule sm:w-10" />}
+                    {i < flow.length - 1 && (
+                      <span
+                        className="line-draw h-px w-6 bg-rule sm:w-10"
+                        style={{ animationDelay: `${700 + i * 180}ms` }}
+                      />
+                    )}
                   </li>
                 ))}
               </ol>
             </Reveal>
+
+            <div className="mt-12 flex items-center gap-3 text-[10px] font-semibold tracking-[0.28em] text-muted-foreground uppercase">
+              <span className="scroll-cue relative block h-8 w-px bg-rule" aria-hidden="true" />
+              Scroll
+            </div>
           </div>
 
           {/* Fanned case-card composition */}
           <div className="lg:col-span-5">
-            <Reveal delay={260}>
-              <div className="group relative h-[38rem] sm:h-[39rem]">
-                {heroCards.map((c, i) => (
+            <div
+              ref={stackRef}
+              className="group relative h-[38rem] sm:h-[39rem]"
+              style={{ perspective: "1200px" }}
+            >
+              {heroCards.map((c, i) => {
+                const depth = (heroCards.length - i) / heroCards.length;
+                return (
                   <div
                     key={c.label}
-                    className="absolute top-0 left-0 w-[76%] max-w-[17.5rem] rounded-xl border border-rule bg-card p-5 shadow-[0_18px_40px_-28px_oklch(0.2_0.02_60/0.45)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[72%]"
+                    className="absolute top-0 left-0 w-[76%] max-w-[17.5rem] rounded-xl border border-rule bg-card p-5 shadow-[0_18px_40px_-28px_oklch(0.2_0.02_60/0.45)] transition-[transform,opacity,box-shadow] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:shadow-[0_28px_60px_-30px_oklch(0.2_0.02_60/0.55)] sm:w-[72%]"
                     style={{
                       zIndex: c.z,
-                      transform: `translate(${c.x}, ${c.y}) rotate(${c.rot})`,
-                      transitionDelay: `${i * 45}ms`,
+                      opacity: ready ? 1 : 0,
+                      transitionDelay: `${240 + i * 110}ms`,
+                      transform: ready
+                        ? `translate(calc(${c.x} + ${tilt.x * depth * 14}px), calc(${c.y} + ${tilt.y * depth * 10}px)) rotate(${c.rot})`
+                        : `translate(${c.x}, calc(${c.y} + 2.5rem)) rotate(0deg) scale(0.96)`,
                     }}
                   >
                     <div className="flex items-start justify-between gap-4">
@@ -106,22 +171,24 @@ export function Hero() {
                         {[0, 1, 2, 3].map((d) => (
                           <span
                             key={d}
-                            className={`h-1 w-6 rounded-full ${d <= i % 4 ? "bg-accent" : "bg-rule"}`}
+                            className={`h-1 w-6 rounded-full transition-colors duration-700 ${d <= i % 4 ? "bg-accent" : "bg-rule"}`}
+                            style={{ transitionDelay: `${600 + d * 120}ms` }}
                           />
                         ))}
                       </span>
                       <ArrowUpRight className="size-3.5 text-muted-foreground" />
                     </div>
                   </div>
-                ))}
-              </div>
-            </Reveal>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ----------------------------- PLATFORM STRIP ---------------------------- */
 
