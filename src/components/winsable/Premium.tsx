@@ -17,17 +17,31 @@ export function IntroCurtain() {
     if (sessionStorage.getItem("winsable-intro") === "1") return;
     sessionStorage.setItem("winsable-intro", "1");
     setState("playing");
+
+    // Always start the experience at the hero, never mid-page.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    const pin = () => window.scrollTo(0, 0);
+    pin();
+    window.addEventListener("scroll", pin);
+
     document.documentElement.style.overflow = "hidden";
     const lift = window.setTimeout(() => setState("done"), 1150);
     const unlock = window.setTimeout(() => {
+      window.removeEventListener("scroll", pin);
+      window.scrollTo(0, 0);
       document.documentElement.style.overflow = "";
     }, 1750);
     return () => {
       window.clearTimeout(lift);
       window.clearTimeout(unlock);
+      window.removeEventListener("scroll", pin);
       document.documentElement.style.overflow = "";
     };
   }, []);
+
 
   if (state === "hidden") return null;
 
