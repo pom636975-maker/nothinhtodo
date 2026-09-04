@@ -92,3 +92,54 @@ export function ServiceIcon({ name, className = "" }: { name: string; className?
     </svg>
   );
 }
+
+export function PlatformMark({ name, className = "" }: { name: string; className?: string }) {
+  const marks: Record<string, ReactNode> = {
+    Instagram: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+      </>
+    ),
+    Facebook: (
+      <>
+        <path d="M14.5 8.5h2.2V5.4h-2.4c-2.2 0-3.6 1.4-3.6 3.7v1.6H8.4v3.1h2.3V21h3.2v-7.2h2.4l.4-3.1h-2.8V9.5c0-.7.3-1 1.2-1Z" />
+      </>
+    ),
+    TikTok: (
+      <>
+        <path d="M13.6 3v9.6a3 3 0 1 1-2.4-2.9" />
+        <path d="M13.6 4.6c.5 2 2 3.4 4.2 3.6" />
+      </>
+    ),
+    YouTube: (
+      <>
+        <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+        <path d="M10.5 9.5v5l4.2-2.5-4.2-2.5Z" fill="currentColor" stroke="none" />
+      </>
+    ),
+    X: (
+      <>
+        <path d="M4 4l7.2 8.4L4.5 20" />
+        <path d="M20 4l-7 8.4L19.5 20" />
+        <path d="M4 4h3.3M16.7 20H20" />
+      </>
+    ),
+  };
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      {marks[name]}
+    </svg>
+  );
+}
