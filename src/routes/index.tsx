@@ -59,9 +59,12 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink">
+      <IntroCurtain />
+      <CursorHalo />
       <ScrollProgress />
       <Nav />
       <main>
+
         <Hero />
         <PlatformStrip />
         <Services />
