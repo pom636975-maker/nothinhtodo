@@ -377,3 +377,24 @@
     animation: none;
   }
 }
+
+@utility intro-word {
+  animation: winsable-intro-word 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes winsable-intro-word {
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-word {
+    animation: none;
+  }
+}
