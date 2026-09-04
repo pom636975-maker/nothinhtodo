@@ -55,11 +55,21 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="relative text-sm text-muted-foreground transition-colors duration-300 hover:text-ink"
+              aria-current={active === l.href ? "true" : undefined}
+              className={`relative text-sm transition-colors duration-300 hover:text-ink ${
+                active === l.href ? "text-ink" : "text-muted-foreground"
+              }`}
             >
               {l.label}
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-accent transition-transform duration-500 ease-out ${
+                  active === l.href ? "scale-x-100" : "scale-x-0"
+                }`}
+              />
             </a>
           ))}
+
         </nav>
 
         <div className="flex items-center gap-2">
