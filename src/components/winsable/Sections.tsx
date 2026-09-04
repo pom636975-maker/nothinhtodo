@@ -5,11 +5,11 @@ import { Reveal } from "./Reveal";
 /* ---------------------------------- HERO --------------------------------- */
 
 const heroCards = [
-  { label: "ACCOUNT RECOVERY", stage: "Problem", rot: "-6deg", x: "-14%", y: "0%", z: 5 },
-  { label: "DISABLED ACCOUNT", stage: "Review", rot: "-2deg", x: "-6%", y: "9%", z: 4 },
-  { label: "IMPERSONATION", stage: "Review", rot: "2deg", x: "3%", y: "18%", z: 3 },
-  { label: "COPYRIGHT", stage: "Prepare", rot: "6deg", x: "12%", y: "27%", z: 2 },
-  { label: "PLATFORM SUPPORT", stage: "Submit", rot: "10deg", x: "21%", y: "36%", z: 1 },
+  { label: "ACCOUNT RECOVERY", stage: "Problem", rot: "-5deg", x: "-8%", y: "0%", z: 5 },
+  { label: "DISABLED ACCOUNT", stage: "Review", rot: "-2deg", x: "0%", y: "17%", z: 4 },
+  { label: "IMPERSONATION", stage: "Review", rot: "1.5deg", x: "8%", y: "34%", z: 3 },
+  { label: "COPYRIGHT", stage: "Prepare", rot: "5deg", x: "16%", y: "51%", z: 2 },
+  { label: "PLATFORM SUPPORT", stage: "Submit", rot: "8deg", x: "24%", y: "68%", z: 1 },
 ];
 
 const flow = ["Problem", "Review", "Prepare", "Submit"];
@@ -81,11 +81,11 @@ export function Hero() {
           {/* Fanned case-card composition */}
           <div className="lg:col-span-5">
             <Reveal delay={260}>
-              <div className="group relative h-[24rem] sm:h-[27rem]">
+              <div className="group relative h-[30rem] sm:h-[34rem]">
                 {heroCards.map((c, i) => (
                   <div
                     key={c.label}
-                    className="absolute top-0 left-0 w-[78%] max-w-[19rem] rounded-xl border border-rule bg-card p-5 shadow-[0_18px_40px_-28px_oklch(0.2_0.02_60/0.45)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[72%]"
+                    className="absolute top-0 left-0 w-[76%] max-w-[17.5rem] rounded-xl border border-rule bg-card p-5 shadow-[0_18px_40px_-28px_oklch(0.2_0.02_60/0.45)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[72%]"
                     style={{
                       zIndex: c.z,
                       transform: `translate(${c.x}, ${c.y}) rotate(${c.rot})`,
@@ -100,7 +100,7 @@ export function Hero() {
                         {c.stage.toUpperCase()}
                       </span>
                     </div>
-                    <p className="display mt-8 text-2xl leading-tight">{c.label}</p>
+                    <p className="display mt-6 text-xl leading-tight sm:text-2xl">{c.label}</p>
                     <div className="mt-5 flex items-center justify-between border-t border-rule pt-4">
                       <span className="flex gap-1.5" aria-hidden="true">
                         {[0, 1, 2, 3].map((d) => (
@@ -243,7 +243,7 @@ export function Services() {
                   className="size-6 shrink-0 text-ink/35 transition-all duration-500 group-hover:-rotate-6 group-hover:text-accent"
                 />
               </div>
-              <div className={`relative ${s.big ? "mt-24 md:mt-40" : "mt-14"}`}>
+              <div className={`relative ${s.big ? "mt-20 md:mt-28" : "mt-14"}`}>
                 <h3 className={`display ${s.big ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"}`}>
                   {s.title}
                 </h3>
