@@ -413,3 +413,29 @@ section[id],
     scroll-behavior: auto;
   }
 }
+
+/* --- cursor spotlight + rotating seal --- */
+
+@utility spotlight {
+  background: radial-gradient(
+    16rem 16rem at var(--mx, 50%) var(--my, 0%),
+    color-mix(in oklab, var(--accent) 20%, transparent),
+    transparent 70%
+  );
+}
+
+@utility seal-spin {
+  animation: winsable-spin 22s linear infinite;
+}
+
+@keyframes winsable-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal-spin {
+    animation: none;
+  }
+}
