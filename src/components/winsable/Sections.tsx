@@ -48,7 +48,7 @@ export function Hero() {
         <div className="lg:col-span-5">
           <Reveal delay={260}>
             <div className="relative rounded-lg border border-rule bg-paper-deep/60 p-5 sm:p-7">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <span className="eyebrow">Case flow</span>
                 <span className="text-xs text-muted-foreground">Problem → Review → Prepare → Submit</span>
               </div>
