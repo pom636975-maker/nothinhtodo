@@ -332,3 +332,48 @@
     opacity: 1 !important;
   }
 }
+
+@utility line-draw {
+  transform-origin: left center;
+  animation: winsable-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes winsable-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility scroll-cue {
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 45%;
+    background: var(--accent);
+    animation: winsable-cue 2.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+}
+
+@keyframes winsable-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(240%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line-draw,
+  .scroll-cue::after {
+    animation: none;
+  }
+}
