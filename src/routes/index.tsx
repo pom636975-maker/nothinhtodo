@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/winsable/Nav";
 import {
   About,
+  Faq,
   FeaturedScenario,
   FinalCta,
   Footer,
@@ -10,6 +11,7 @@ import {
   PlatformStrip,
   Process,
   Services,
+  TextBand,
 } from "@/components/winsable/Sections";
 
 const title = "WinsAble — Clarity for difficult digital platform cases";
