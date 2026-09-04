@@ -543,10 +543,10 @@ export function Faq() {
                     </span>
                   </button>
                   <div
-                    className="grid overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                    className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    style={{ maxHeight: isOpen ? "16rem" : "0px", opacity: isOpen ? 1 : 0 }}
                   >
-                    <p className="min-h-0 max-w-xl pb-7 text-base leading-relaxed text-muted-foreground">
+                    <p className="max-w-xl pb-7 text-base leading-relaxed text-muted-foreground">
                       {f.a}
                     </p>
                   </div>
