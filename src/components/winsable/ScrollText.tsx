@@ -8,12 +8,14 @@ export function ScrollText({
   text,
   className = "",
   dim = 0.18,
+  as: Tag = "p",
 }: {
   text: string;
   className?: string;
   dim?: number;
+  as?: "p" | "h2" | "h3";
 }) {
-  const ref = useRef<HTMLParagraphElement | null>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export function ScrollText({
   const words = text.split(" ");
 
   return (
-    <p ref={ref} className={className}>
+    <Tag ref={ref as never} className={className}>
       {words.map((w, i) => {
         const at = i / words.length;
         const lit = Math.min(1, Math.max(0, (progress - at) * words.length * 0.8 + 0.15));
@@ -65,6 +67,6 @@ export function ScrollText({
           </span>
         );
       })}
-    </p>
+    </Tag>
   );
 }
