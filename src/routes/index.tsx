@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/winsable/Nav";
+import { CornerMeta, ScrollProgress } from "@/components/winsable/Chrome";
 import {
   About,
   Faq,
@@ -54,6 +55,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink">
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />
@@ -68,6 +70,7 @@ function Index() {
         <FinalCta />
       </main>
       <Footer />
+      <CornerMeta />
     </div>
   );
 }
