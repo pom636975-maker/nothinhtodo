@@ -91,7 +91,13 @@ export function PlatformStrip() {
     <section className="border-y border-rule bg-paper-deep/50 py-6">
       <div className="flex items-center gap-6 overflow-hidden">
         <span className="eyebrow shrink-0 pl-6 md:pl-12 xl:pl-22">Platforms we work with</span>
-        <div className="relative flex-1 overflow-hidden">
+        <div
+          className="relative flex-1 overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 4rem, black 90%, transparent)",
+          }}
+        >
+
           <div className="marquee-track gap-14">
             {[0, 1].map((dup) => (
               <div key={dup} className="flex shrink-0 items-center gap-14 pr-14" aria-hidden={dup === 1}>
