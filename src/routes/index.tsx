@@ -3,6 +3,8 @@ import { Nav } from "@/components/winsable/Nav";
 import { CornerMeta, ScrollProgress } from "@/components/winsable/Chrome";
 import { Boundaries, Coverage } from "@/components/winsable/Extras";
 import { Reviews } from "@/components/winsable/Reviews";
+import { CursorHalo, IntroCurtain, StickyCta } from "@/components/winsable/Premium";
+
 import {
   About,
   Faq,
@@ -57,9 +59,12 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink">
+      <IntroCurtain />
+      <CursorHalo />
       <ScrollProgress />
       <Nav />
       <main>
+
         <Hero />
         <PlatformStrip />
         <Services />
@@ -76,6 +81,8 @@ function Index() {
       </main>
       <Footer />
       <CornerMeta />
+      <StickyCta />
+
     </div>
   );
 }
