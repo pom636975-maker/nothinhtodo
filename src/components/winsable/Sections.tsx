@@ -348,72 +348,80 @@ export function Services() {
       <div className="mt-12 grid auto-rows-min gap-4 lg:grid-cols-12">
         {services.map((s, i) => (
           <Reveal key={s.n} delay={i * 70} className={s.span}>
-            <article
-              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-rule bg-card p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-ink/25 hover:shadow-[0_34px_70px_-42px_oklch(0.2_0.02_60/0.55)] ${
-                s.big ? "md:p-10" : ""
-              }`}
-            >
-              {/* hover wash */}
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(120%_90%_at_100%_0%,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              {/* top hairline sweep */}
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-700 ease-out group-hover:scale-x-100"
-              />
-              <span
-                aria-hidden="true"
-                className={`display pointer-events-none absolute -right-2 -bottom-6 leading-none text-ink/[0.045] transition-all duration-700 group-hover:-translate-y-1 group-hover:text-accent/15 ${
-                  s.big ? "text-[13rem]" : "text-[9rem]"
-                }`}
-              >
-                {s.n}
-              </span>
-              <div className="relative z-10 flex items-start justify-between gap-6">
-                <span className="flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-accent">
-                  {s.n}
-                  <span className="h-px w-6 bg-accent/40 transition-all duration-500 group-hover:w-12" />
-                </span>
-                <span className="flex size-10 items-center justify-center rounded-full border border-rule transition-all duration-500 group-hover:border-accent/40 group-hover:bg-accent/10">
-                  <ServiceIcon
-                    name={s.icon}
-                    className="size-5 shrink-0 text-ink/40 transition-all duration-500 group-hover:-rotate-6 group-hover:text-accent"
-                  />
-                </span>
-              </div>
-              <div className={`relative z-10 ${s.big ? "mt-20 md:mt-28" : "mt-14"}`}>
-                <h3 className={`display ${s.big ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"}`}>
-                  {s.title}
-                </h3>
-                <p
-                  className={`mt-4 leading-relaxed text-muted-foreground ${s.big ? "max-w-md text-base" : "text-sm"}`}
-                >
-                  {s.body}
-                </p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {s.tags.map((t) => (
-                    <li
-                      key={t}
-                      className="rounded-full border border-rule px-3 py-1 text-[0.68rem] font-medium tracking-[0.08em] text-ink/55 uppercase transition-colors duration-500 group-hover:border-accent/30 group-hover:text-ink/75"
-                    >
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-                <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold">
-                  <span className="link-underline">Start here</span>
-                  <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </span>
-              </div>
-            </article>
+            <ServiceCard s={s} />
           </Reveal>
         ))}
       </div>
     </section>
   );
 }
+
+function ServiceCard({ s }: { s: (typeof services)[number] }) {
+  const spot = useSpotlight();
+
+  return (
+    <article
+      onPointerMove={spot.onPointerMove}
+      style={spot.style}
+      className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-rule bg-card p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-ink/25 hover:shadow-[0_34px_70px_-42px_oklch(0.2_0.02_60/0.55)] ${
+        s.big ? "md:p-10" : ""
+      }`}
+    >
+      {/* cursor spotlight */}
+      <Spotlight />
+      {/* top hairline sweep */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-700 ease-out group-hover:scale-x-100"
+      />
+      <span
+        aria-hidden="true"
+        className={`display pointer-events-none absolute -right-2 -bottom-6 leading-none text-ink/[0.045] transition-all duration-700 group-hover:-translate-y-1 group-hover:text-accent/15 ${
+          s.big ? "text-[13rem]" : "text-[9rem]"
+        }`}
+      >
+        {s.n}
+      </span>
+      <div className="relative z-10 flex items-start justify-between gap-6">
+        <span className="flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-accent">
+          {s.n}
+          <span className="h-px w-6 bg-accent/40 transition-all duration-500 group-hover:w-12" />
+        </span>
+        <span className="flex size-10 items-center justify-center rounded-full border border-rule transition-all duration-500 group-hover:rotate-12 group-hover:border-accent/40 group-hover:bg-accent/10">
+          <ServiceIcon
+            name={s.icon}
+            className="size-5 shrink-0 text-ink/40 transition-all duration-500 group-hover:-rotate-6 group-hover:text-accent"
+          />
+        </span>
+      </div>
+      <div className={`relative z-10 ${s.big ? "mt-20 md:mt-28" : "mt-14"}`}>
+        <h3 className={`display ${s.big ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"}`}>
+          {s.title}
+        </h3>
+        <p
+          className={`mt-4 leading-relaxed text-muted-foreground ${s.big ? "max-w-md text-base" : "text-sm"}`}
+        >
+          {s.body}
+        </p>
+        <ul className="mt-5 flex flex-wrap gap-2">
+          {s.tags.map((t) => (
+            <li
+              key={t}
+              className="rounded-full border border-rule px-3 py-1 text-[0.68rem] font-medium tracking-[0.08em] text-ink/55 uppercase transition-colors duration-500 group-hover:border-accent/30 group-hover:text-ink/75"
+            >
+              {t}
+            </li>
+          ))}
+        </ul>
+        <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold">
+          <span className="link-underline">Start here</span>
+          <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </span>
+      </div>
+    </article>
+  );
+}
+
 
 
 /* ------------------------------- TEXT BAND -------------------------------- */
