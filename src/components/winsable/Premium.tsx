@@ -126,7 +126,7 @@ export function StickyCta() {
       }`}
     >
       <a
-        href="#contact"
+        href="#start"
         className="group inline-flex items-center gap-3 rounded-full border border-ink/10 bg-ink/95 px-5 py-3 text-paper shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)] backdrop-blur transition-colors hover:bg-accent"
       >
         <span className="size-1.5 animate-pulse rounded-full bg-accent transition-colors group-hover:bg-paper" />
