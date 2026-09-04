@@ -3,6 +3,8 @@ import { Nav } from "@/components/winsable/Nav";
 import { CornerMeta, ScrollProgress } from "@/components/winsable/Chrome";
 import { Boundaries, Coverage } from "@/components/winsable/Extras";
 import { Reviews } from "@/components/winsable/Reviews";
+import { CursorHalo, IntroCurtain, StickyCta } from "@/components/winsable/Premium";
+
 import {
   About,
   Faq,
