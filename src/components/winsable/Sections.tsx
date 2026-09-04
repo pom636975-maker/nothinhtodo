@@ -185,13 +185,14 @@ export function Hero() {
                 return (
                   <div
                     key={c.label}
-                    className="absolute top-0 left-0 w-[76%] max-w-[17.5rem] rounded-xl border border-rule bg-card p-5 shadow-[0_18px_40px_-28px_oklch(0.2_0.02_60/0.45)] transition-[transform,opacity,box-shadow] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:shadow-[0_28px_60px_-30px_oklch(0.2_0.02_60/0.55)] sm:w-[72%]"
+                    className="absolute top-0 left-0 w-[76%] max-w-[17.5rem] rounded-xl border border-rule bg-card p-5 shadow-[0_18px_40px_-28px_oklch(0.2_0.02_60/0.45)] transition-[transform,opacity,box-shadow,border-color] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:shadow-[0_28px_60px_-30px_oklch(0.2_0.02_60/0.55)] sm:w-[72%]"
                     style={{
                       zIndex: c.z,
                       opacity: ready ? 1 : 0,
                       transitionDelay: `${240 + i * 110}ms`,
+                      borderColor: active === i ? "var(--accent)" : undefined,
                       transform: ready
-                        ? `translate(calc(${c.x} + ${tilt.x * depth * 14}px), calc(${c.y} + ${tilt.y * depth * 10}px)) rotate(${c.rot})`
+                        ? `translate(calc(${c.x} + ${tilt.x * depth * 14}px), calc(${c.y} + ${tilt.y * depth * 10}px)) rotate(${c.rot}) scale(${active === i ? 1.035 : 1})`
                         : `translate(${c.x}, calc(${c.y} + 2.5rem)) rotate(0deg) scale(0.96)`,
                     }}
                   >
@@ -199,7 +200,7 @@ export function Hero() {
                       <span className="text-[0.65rem] font-bold tracking-[0.16em] text-muted-foreground">
                         CASE {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="rounded-full border border-rule px-2 py-0.5 text-[0.6rem] font-semibold tracking-[0.12em] text-accent">
+                      <span className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-semibold tracking-[0.12em] text-accent transition-colors duration-500 ${active === i ? "border-accent bg-accent/10" : "border-rule"}`}>
                         {c.stage.toUpperCase()}
                       </span>
                     </div>
