@@ -2,6 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, CtaLink, PlatformMark, ServiceIcon } from "./Bits";
 import { Reveal } from "./Reveal";
 import { ScrollText } from "./ScrollText";
+import { Magnetic, Scramble, Seal, Spotlight, useSpotlight } from "./Fx";
 
 /* ---------------------------------- HERO --------------------------------- */
 
@@ -589,7 +590,10 @@ export function Philosophy() {
         <Reveal>
           <p className="eyebrow text-paper/50">Our Position</p>
           <h2 className="display mt-10 text-[clamp(3rem,11vw,9rem)] leading-[0.9]">
-            Clarity before <span className="italic text-accent">claims.</span>
+            Clarity before{" "}
+            <span className="italic text-accent">
+              <Scramble text="claims." />
+            </span>
           </h2>
         </Reveal>
         <div className="mt-20 grid gap-14 lg:grid-cols-12">
@@ -733,7 +737,10 @@ export function FinalCta() {
         <Reveal>
           <p className="eyebrow">Start here</p>
           <h2 className="display mx-auto mt-8 max-w-4xl text-[clamp(2.7rem,9vw,7rem)]">
-            Make your next step <span className="mark-highlight italic">clear.</span>
+            Make your next step{" "}
+            <span className="mark-highlight italic">
+              <Scramble text="clear." />
+            </span>
           </h2>
         </Reveal>
         <Reveal delay={100}>
@@ -742,10 +749,13 @@ export function FinalCta() {
           </p>
         </Reveal>
         <Reveal delay={160}>
-          <div className="mt-12 flex justify-center">
-            <CtaLink href="mailto:hello@winsable.com" variant="solid" className="px-8 py-4 text-base">
-              Start a Case
-            </CtaLink>
+          <div className="relative mt-12 flex justify-center">
+            <Seal className="absolute -top-16 right-2 size-28 text-ink/25 md:right-16 md:size-32" />
+            <Magnetic strength={0.28}>
+              <CtaLink href="mailto:hello@winsable.com" variant="solid" className="px-8 py-4 text-base">
+                Start a Case
+              </CtaLink>
+            </Magnetic>
           </div>
         </Reveal>
       </div>
