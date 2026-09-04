@@ -134,9 +134,9 @@ export function PlatformStrip() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
         <span className="eyebrow shrink-0 pl-6 md:pl-12 xl:pl-22">Platforms we work with</span>
         <div
-          className="relative min-w-0 flex-1 overflow-hidden"
+          className="relative min-w-0 flex-1 overflow-hidden sm:ml-6"
           style={{
-            maskImage: "linear-gradient(to right, transparent, black 3rem, black 90%, transparent)",
+            maskImage: "linear-gradient(to right, transparent, black 2rem, black 88%, transparent)",
           }}
         >
           <div className="marquee-track gap-12">
