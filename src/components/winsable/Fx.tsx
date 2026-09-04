@@ -161,7 +161,7 @@ export function Seal({ className = "" }: { className?: string }) {
         </defs>
         <text className="fill-current text-[10.5px] font-semibold tracking-[0.32em] uppercase">
           <textPath href="#seal-path">
-            Clarity before claims • Organize • Prepare • Submit •
+            Clarity • WinsAble • 
           </textPath>
         </text>
       </svg>
