@@ -747,8 +747,16 @@ export function Footer() {
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-rule pt-6 text-xs text-muted-foreground">
           <span>© {new Date().getFullYear()} WinsAble. All rights reserved.</span>
-          <span>Final decisions rest with the platform.</span>
+          <span className="hidden sm:inline">Final decisions rest with the platform.</span>
+          <a
+            href="#top"
+            className="group inline-flex items-center gap-2 uppercase tracking-[0.2em] transition-colors hover:text-ink"
+          >
+            Back to top
+            <span className="inline-block transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
+          </a>
         </div>
+
       </div>
     </footer>
   );

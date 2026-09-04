@@ -10,6 +10,7 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -17,6 +18,26 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+    const nodes = ids
+      .map((id) => document.getElementById(id))
+      .filter((n): n is HTMLElement => Boolean(n));
+    if (!nodes.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.6, 1] },
+    );
+    nodes.forEach((n) => observer.observe(n));
+    return () => observer.disconnect();
+  }, []);
+
 
   return (
     <header
@@ -34,11 +55,21 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="relative text-sm text-muted-foreground transition-colors duration-300 hover:text-ink"
+              aria-current={active === l.href ? "true" : undefined}
+              className={`relative text-sm transition-colors duration-300 hover:text-ink ${
+                active === l.href ? "text-ink" : "text-muted-foreground"
+              }`}
             >
               {l.label}
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-accent transition-transform duration-500 ease-out ${
+                  active === l.href ? "scale-x-100" : "scale-x-0"
+                }`}
+              />
             </a>
           ))}
+
         </nav>
 
         <div className="flex items-center gap-2">
