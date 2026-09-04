@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, CtaLink, PlatformMark, ServiceIcon } from "./Bits";
 import { Reveal } from "./Reveal";
+import { ScrollText } from "./ScrollText";
 
 /* ---------------------------------- HERO --------------------------------- */
 
@@ -541,10 +542,11 @@ export function Philosophy() {
         </Reveal>
         <div className="mt-20 grid gap-14 lg:grid-cols-12">
           <Reveal delay={100} className="lg:col-span-5">
-            <p className="text-lg leading-relaxed text-paper/70">
-              People dealing with difficult account situations deserve clear information rather than
-              exaggerated promises.
-            </p>
+            <ScrollText
+              className="text-lg leading-relaxed text-paper"
+              dim={0.22}
+              text="People dealing with difficult account situations deserve clear information rather than exaggerated promises."
+            />
           </Reveal>
           <ol className="lg:col-span-6 lg:col-start-7">
             {principles.map((p, i) => (
@@ -572,9 +574,12 @@ export function About() {
       <div className="grid gap-14 lg:grid-cols-12">
         <Reveal className="lg:col-span-6">
           <p className="eyebrow">About</p>
-          <h2 className="display mt-8 text-[clamp(2.3rem,5.2vw,4.4rem)]">
-            Digital problems are confusing enough. The process shouldn't be.
-          </h2>
+          <ScrollText
+            as="h2"
+            className="display mt-8 text-[clamp(2.3rem,5.2vw,4.4rem)]"
+            dim={0.14}
+            text="Digital problems are confusing enough. The process shouldn't be."
+          />
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5 lg:col-start-8 lg:self-end">
           <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
