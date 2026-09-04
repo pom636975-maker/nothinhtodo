@@ -275,6 +275,7 @@ const services = [
     title: "Account Recovery",
     icon: "recovery",
     body: "Lost access to an account you own? We organize your details and ownership evidence into a clear recovery request.",
+    tags: ["Ownership evidence", "Login history", "Recovery form"],
     span: "lg:col-span-7 lg:row-span-2",
     big: true,
   },
@@ -283,6 +284,7 @@ const services = [
     title: "Disabled Accounts",
     icon: "disabled",
     body: "Understand what a disablement usually relates to, and prepare a structured appeal through the right channel.",
+    tags: ["Appeal draft", "Policy context"],
     span: "lg:col-span-5",
   },
   {
@@ -290,6 +292,7 @@ const services = [
     title: "Impersonation",
     icon: "impersonation",
     body: "Document accounts pretending to be you and prepare the appropriate impersonation report.",
+    tags: ["Identity proof", "Report pack"],
     span: "lg:col-span-5",
   },
   {
@@ -297,6 +300,7 @@ const services = [
     title: "Copyright Assistance",
     icon: "copyright",
     body: "Organize ownership details for copyright-related requests so nothing essential is missing.",
+    tags: ["Original files", "Rights summary"],
     span: "lg:col-span-6",
   },
   {
@@ -304,6 +308,7 @@ const services = [
     title: "Platform Support",
     icon: "support",
     body: "General guidance on reaching platform support with a request that is clear and complete.",
+    tags: ["Right channel", "Clear summary"],
     span: "lg:col-span-6",
   },
 ];
@@ -312,14 +317,30 @@ export function Services() {
   return (
     <section id="services" className="shell py-24 md:py-36">
       <div className="grid gap-8 border-b border-rule pb-12 lg:grid-cols-12">
-        <Reveal className="lg:col-span-5">
+        <Reveal className="lg:col-span-6">
           <p className="eyebrow">Our Services</p>
-          <h2 className="display mt-6 text-[clamp(2.4rem,5.4vw,4.5rem)]">How We Can Help</h2>
+          <h2 className="display mt-6 text-[clamp(2.4rem,5.4vw,4.5rem)]">
+            How We Can{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">Help</span>
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-[0.12em] z-0 h-[0.28em] origin-left bg-accent/25"
+              />
+            </span>
+          </h2>
         </Reveal>
         <Reveal delay={100} className="lg:col-span-5 lg:col-start-8 lg:self-end">
           <p className="text-base leading-relaxed text-muted-foreground">
             Five focused areas. Each one starts the same way — with the facts written down clearly
             and the request prepared properly.
+          </p>
+          <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold tracking-[0.16em] text-ink/45 uppercase">
+            <span>Organize</span>
+            <span className="h-px w-5 bg-rule" />
+            <span>Prepare</span>
+            <span className="h-px w-5 bg-rule" />
+            <span>Submit</span>
           </p>
         </Reveal>
       </div>
@@ -328,29 +349,41 @@ export function Services() {
         {services.map((s, i) => (
           <Reveal key={s.n} delay={i * 70} className={s.span}>
             <article
-              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-rule bg-card p-7 transition-all duration-500 hover:-translate-y-1 hover:border-ink/25 hover:shadow-[0_28px_60px_-40px_oklch(0.2_0.02_60/0.5)] ${
+              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-rule bg-card p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-ink/25 hover:shadow-[0_34px_70px_-42px_oklch(0.2_0.02_60/0.55)] ${
                 s.big ? "md:p-10" : ""
               }`}
             >
+              {/* hover wash */}
               <span
                 aria-hidden="true"
-                className={`display pointer-events-none absolute -right-2 -bottom-6 leading-none text-ink/[0.045] transition-all duration-500 group-hover:text-accent/15 ${
+                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(120%_90%_at_100%_0%,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              {/* top hairline sweep */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px origin-left scale-x-0 bg-accent transition-transform duration-700 ease-out group-hover:scale-x-100"
+              />
+              <span
+                aria-hidden="true"
+                className={`display pointer-events-none absolute -right-2 -bottom-6 leading-none text-ink/[0.045] transition-all duration-700 group-hover:-translate-y-1 group-hover:text-accent/15 ${
                   s.big ? "text-[13rem]" : "text-[9rem]"
                 }`}
               >
                 {s.n}
               </span>
-              <div className="relative flex items-start justify-between gap-6">
+              <div className="relative z-10 flex items-start justify-between gap-6">
                 <span className="flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-accent">
                   {s.n}
                   <span className="h-px w-6 bg-accent/40 transition-all duration-500 group-hover:w-12" />
                 </span>
-                <ServiceIcon
-                  name={s.icon}
-                  className="size-6 shrink-0 text-ink/35 transition-all duration-500 group-hover:-rotate-6 group-hover:text-accent"
-                />
+                <span className="flex size-10 items-center justify-center rounded-full border border-rule transition-all duration-500 group-hover:border-accent/40 group-hover:bg-accent/10">
+                  <ServiceIcon
+                    name={s.icon}
+                    className="size-5 shrink-0 text-ink/40 transition-all duration-500 group-hover:-rotate-6 group-hover:text-accent"
+                  />
+                </span>
               </div>
-              <div className={`relative ${s.big ? "mt-20 md:mt-28" : "mt-14"}`}>
+              <div className={`relative z-10 ${s.big ? "mt-20 md:mt-28" : "mt-14"}`}>
                 <h3 className={`display ${s.big ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"}`}>
                   {s.title}
                 </h3>
@@ -359,6 +392,16 @@ export function Services() {
                 >
                   {s.body}
                 </p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {s.tags.map((t) => (
+                    <li
+                      key={t}
+                      className="rounded-full border border-rule px-3 py-1 text-[0.68rem] font-medium tracking-[0.08em] text-ink/55 uppercase transition-colors duration-500 group-hover:border-accent/30 group-hover:text-ink/75"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
                 <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold">
                   <span className="link-underline">Start here</span>
                   <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -371,6 +414,7 @@ export function Services() {
     </section>
   );
 }
+
 
 /* ------------------------------- TEXT BAND -------------------------------- */
 
