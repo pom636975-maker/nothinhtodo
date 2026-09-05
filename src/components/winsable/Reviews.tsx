@@ -6,7 +6,7 @@ import { Reveal } from "./Reveal";
  * Replace these with real, verified client reviews before going live.
  * Keep them factual — no guarantees, percentages or invented results.
  */
-export const reviews = [
+const reviews = [
   {
     quote:
       "The process was explained step by step, so I finally understood what was actually being submitted and why.",
