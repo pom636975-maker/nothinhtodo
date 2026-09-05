@@ -3,8 +3,7 @@ import { ArrowUpRight } from "./Bits";
 
 function prefersReduced() {
   return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 }
 
@@ -41,7 +40,6 @@ export function IntroCurtain() {
       document.documentElement.style.overflow = "";
     };
   }, []);
-
 
   if (state === "hidden") return null;
 

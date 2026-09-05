@@ -78,7 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "WinsAble" },
-      { name: "description", content: "Independent assistance for difficult digital platform cases." },
+      {
+        name: "description",
+        content: "Independent assistance for difficult digital platform cases.",
+      },
       { property: "og:site_name", content: "WinsAble" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

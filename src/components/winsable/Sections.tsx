@@ -26,7 +26,13 @@ const headline: { text: string; mark?: boolean; br?: boolean }[] = [
   { text: "matters." },
 ];
 
-const rotating = ["account recovery", "disabled accounts", "impersonation", "copyright", "platform support"];
+const rotating = [
+  "account recovery",
+  "disabled accounts",
+  "impersonation",
+  "copyright",
+  "platform support",
+];
 
 export function Hero() {
   const [ready, setReady] = useState(false);
@@ -49,7 +55,6 @@ export function Hero() {
       window.clearInterval(b);
     };
   }, []);
-
 
   useEffect(() => {
     const el = stackRef.current;
@@ -137,8 +142,6 @@ export function Hero() {
               </p>
             </Reveal>
 
-
-
             <Reveal delay={220}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <CtaLink href="#start">Start a Case</CtaLink>
@@ -202,7 +205,9 @@ export function Hero() {
                       <span className="text-[0.65rem] font-bold tracking-[0.16em] text-muted-foreground">
                         CASE {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-semibold tracking-[0.12em] text-accent transition-colors duration-500 ${active === i ? "border-accent bg-accent/10" : "border-rule"}`}>
+                      <span
+                        className={`rounded-full border px-2 py-0.5 text-[0.6rem] font-semibold tracking-[0.12em] text-accent transition-colors duration-500 ${active === i ? "border-accent bg-accent/10" : "border-rule"}`}
+                      >
                         {c.stage.toUpperCase()}
                       </span>
                     </div>
@@ -230,7 +235,6 @@ export function Hero() {
   );
 }
 
-
 /* ----------------------------- PLATFORM STRIP ---------------------------- */
 
 const platforms = ["Instagram", "Facebook", "TikTok", "YouTube", "X"];
@@ -249,7 +253,11 @@ export function PlatformStrip() {
         >
           <div className="marquee-track gap-12">
             {[0, 1].map((dup) => (
-              <div key={dup} className="flex shrink-0 items-center gap-12 pr-12" aria-hidden={dup === 1}>
+              <div
+                key={dup}
+                className="flex shrink-0 items-center gap-12 pr-12"
+                aria-hidden={dup === 1}
+              >
                 {row.map((p, i) => (
                   <span
                     key={`${dup}-${p}-${i}`}
@@ -423,16 +431,9 @@ function ServiceCard({ s }: { s: (typeof services)[number] }) {
   );
 }
 
-
-
 /* ------------------------------- TEXT BAND -------------------------------- */
 
-const bandWords = [
-  "Organize the facts",
-  "Prepare the request",
-  "Submit properly",
-  "Stay informed",
-];
+const bandWords = ["Organize the facts", "Prepare the request", "Submit properly", "Stay informed"];
 
 export function TextBand() {
   const row = [...bandWords, ...bandWords, ...bandWords];
@@ -462,8 +463,16 @@ export function TextBand() {
 const steps = [
   { n: "01", title: "Tell Us What Happened", body: "Share the situation in your own words." },
   { n: "02", title: "We Organize the Details", body: "Facts, dates and evidence in one place." },
-  { n: "03", title: "Prepare the Appropriate Request", body: "Written clearly, without exaggeration." },
-  { n: "04", title: "Submit Through the Relevant Channel", body: "The official route for your case type." },
+  {
+    n: "03",
+    title: "Prepare the Appropriate Request",
+    body: "Written clearly, without exaggeration.",
+  },
+  {
+    n: "04",
+    title: "Submit Through the Relevant Channel",
+    body: "The official route for your case type.",
+  },
   { n: "05", title: "Receive Your Case Reference", body: "So you always know where things stand." },
 ];
 
@@ -486,7 +495,10 @@ export function Process() {
         </div>
 
         <div className="relative mt-16">
-          <span aria-hidden="true" className="absolute top-0 left-0 hidden h-px w-full bg-rule lg:block" />
+          <span
+            aria-hidden="true"
+            className="absolute top-0 left-0 hidden h-px w-full bg-rule lg:block"
+          />
           <ol className="grid gap-px lg:grid-cols-5">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.n} delay={i * 80} className="group relative">
@@ -700,12 +712,19 @@ export function Faq() {
                     <span className="display text-xl leading-snug md:text-2xl">{f.q}</span>
                     <span
                       className={`mt-1 grid size-8 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
-                        isOpen ? "rotate-45 border-accent bg-accent text-accent-foreground" : "border-rule text-ink"
+                        isOpen
+                          ? "rotate-45 border-accent bg-accent text-accent-foreground"
+                          : "border-rule text-ink"
                       }`}
                       aria-hidden="true"
                     >
                       <svg viewBox="0 0 16 16" className="size-3.5" fill="none">
-                        <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                        <path
+                          d="M8 3v10M3 8h10"
+                          stroke="currentColor"
+                          strokeWidth="1.4"
+                          strokeLinecap="round"
+                        />
                       </svg>
                     </span>
                   </button>
@@ -752,7 +771,11 @@ export function FinalCta() {
           <div className="relative mt-12 flex justify-center">
             <Seal className="absolute top-1/2 right-4 size-24 -translate-y-1/2 text-ink/30 md:right-24 md:size-28" />
             <Magnetic strength={0.28}>
-              <CtaLink href="mailto:hello@winsable.com" variant="solid" className="px-8 py-4 text-base">
+              <CtaLink
+                href="mailto:hello@winsable.com"
+                variant="solid"
+                className="px-8 py-4 text-base"
+              >
                 Start a Case
               </CtaLink>
             </Magnetic>
@@ -789,7 +812,10 @@ export function Footer() {
                 ["Contact", "mailto:hello@winsable.com"],
               ].map(([label, href]) => (
                 <li key={label}>
-                  <a href={href} className="link-underline text-muted-foreground transition-colors hover:text-ink">
+                  <a
+                    href={href}
+                    className="link-underline text-muted-foreground transition-colors hover:text-ink"
+                  >
                     {label}
                   </a>
                 </li>
@@ -815,10 +841,11 @@ export function Footer() {
             className="group inline-flex items-center gap-2 uppercase tracking-[0.2em] transition-colors hover:text-ink"
           >
             Back to top
-            <span className="inline-block transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
+            <span className="inline-block transition-transform duration-300 group-hover:-translate-y-0.5">
+              ↑
+            </span>
           </a>
         </div>
-
       </div>
     </footer>
   );

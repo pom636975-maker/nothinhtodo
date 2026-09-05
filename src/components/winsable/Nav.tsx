@@ -38,7 +38,6 @@ export function Nav() {
     return () => observer.disconnect();
   }, []);
 
-
   return (
     <header
       className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
@@ -69,7 +68,6 @@ export function Nav() {
               />
             </a>
           ))}
-
         </nav>
 
         <div className="flex items-center gap-2">
