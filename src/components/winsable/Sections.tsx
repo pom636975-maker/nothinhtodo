@@ -2,7 +2,8 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, CtaLink, PlatformMark, ServiceIcon } from "./Bits";
 import { Reveal } from "./Reveal";
 import { ScrollText } from "./ScrollText";
-import { Magnetic, Scramble, Seal, Spotlight, useSpotlight } from "./Fx";
+import { Magnetic, Scramble, Seal, Spotlight } from "./Fx";
+import { useSpotlight } from "./useSpotlight";
 
 /* ---------------------------------- HERO --------------------------------- */
 
