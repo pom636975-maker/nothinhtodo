@@ -117,7 +117,6 @@ export function Scramble({
   );
 }
 
-
 export function Spotlight() {
   return (
     <span

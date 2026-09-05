@@ -1,4 +1,9 @@
-import { useCallback, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  useCallback,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 
 /** Cursor-following spotlight for cards. Spread on the element. */
 export function useSpotlight() {
