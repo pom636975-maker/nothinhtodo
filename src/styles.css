@@ -194,12 +194,6 @@
   pointer-events: none;
 }
 
-@utility marquee-reverse {
-  display: flex;
-  width: max-content;
-  animation: winsable-marquee 40s linear infinite reverse;
-}
-
 @utility band-marquee {
   display: flex;
   width: max-content;
@@ -247,7 +241,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-reverse,
   .band-marquee,
   .float-slow {
     animation: none;

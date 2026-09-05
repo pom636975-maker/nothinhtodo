@@ -50,7 +50,11 @@ const rows = [
     cases: "Copyright · Platform Support",
     note: "Claim and counter-notice paperwork, organized properly.",
   },
-  { name: "X", cases: "Recovery · Impersonation", note: "Support tickets written once, written clearly." },
+  {
+    name: "X",
+    cases: "Recovery · Impersonation",
+    note: "Support tickets written once, written clearly.",
+  },
 ];
 
 /** Hover-expanding editorial index of platforms. */
@@ -61,14 +65,16 @@ export function Coverage() {
     <section id="coverage" className="border-y border-rule bg-paper-deep/30 py-24 md:py-36">
       <div className="shell grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="text-[11px] font-semibold tracking-[0.32em] text-accent uppercase">(04) Coverage</p>
+          <p className="text-[11px] font-semibold tracking-[0.32em] text-accent uppercase">
+            (04) Coverage
+          </p>
           <h2 className="mt-6 font-display text-[clamp(2.4rem,4.6vw,4rem)] leading-[0.95]">
             <WordReveal text="Where we" />
             <WordReveal text="work." accentFrom={0} />
           </h2>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Each platform has its own route, its own wording and its own evidence expectations. We follow the
-            one that matches your case.
+            Each platform has its own route, its own wording and its own evidence expectations. We
+            follow the one that matches your case.
           </p>
         </div>
 
@@ -146,7 +152,9 @@ export function Boundaries() {
   return (
     <section className="shell py-24 md:py-36">
       <Reveal>
-        <p className="text-[11px] font-semibold tracking-[0.32em] text-accent uppercase">(07) Boundaries</p>
+        <p className="text-[11px] font-semibold tracking-[0.32em] text-accent uppercase">
+          (07) Boundaries
+        </p>
       </Reveal>
       <h2 className="mt-6 max-w-3xl font-display text-[clamp(2.4rem,5vw,4.4rem)] leading-[0.95]">
         <WordReveal text="Honest about what" />
@@ -158,7 +166,12 @@ export function Boundaries() {
           <p className="text-[11px] font-semibold tracking-[0.28em] text-accent uppercase">We do</p>
           <ul className="mt-6 space-y-5">
             {doList.map((item, i) => (
-              <Reveal as="li" key={item} delay={i * 70} className="flex gap-4 text-[15px] leading-relaxed">
+              <Reveal
+                as="li"
+                key={item}
+                delay={i * 70}
+                className="flex gap-4 text-[15px] leading-relaxed"
+              >
                 <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
                 {item}
               </Reveal>
@@ -166,7 +179,9 @@ export function Boundaries() {
           </ul>
         </div>
         <div className="grain bg-ink p-8 text-paper md:p-10">
-          <p className="text-[11px] font-semibold tracking-[0.28em] text-paper/50 uppercase">We don't</p>
+          <p className="text-[11px] font-semibold tracking-[0.28em] text-paper/50 uppercase">
+            We don't
+          </p>
           <ul className="mt-6 space-y-5">
             {dontList.map((item, i) => (
               <Reveal

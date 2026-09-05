@@ -10,8 +10,7 @@ import {
 
 function reduced() {
   return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 }
 
@@ -47,7 +46,10 @@ export function Magnetic({
       className={`inline-block will-change-transform ${className}`}
       style={{
         transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
-        transition: offset.x === 0 && offset.y === 0 ? "transform 0.5s cubic-bezier(0.22,1,0.36,1)" : "transform 0.12s linear",
+        transition:
+          offset.x === 0 && offset.y === 0
+            ? "transform 0.5s cubic-bezier(0.22,1,0.36,1)"
+            : "transform 0.12s linear",
       }}
     >
       {children}
@@ -89,9 +91,7 @@ export function Scramble({
             text
               .split("")
               .map((c, i) =>
-                i < revealed || c === " "
-                  ? c
-                  : GLYPHS[Math.floor(Math.random() * GLYPHS.length)],
+                i < revealed || c === " " ? c : GLYPHS[Math.floor(Math.random() * GLYPHS.length)],
               )
               .join(""),
           );
@@ -117,24 +117,6 @@ export function Scramble({
   );
 }
 
-/** Cursor-following spotlight for cards. Spread on the element. */
-export function useSpotlight() {
-  const [style, setStyle] = useState<CSSProperties>({
-    "--mx": "50%",
-    "--my": "0%",
-  } as CSSProperties);
-
-  const onPointerMove = useCallback((e: ReactPointerEvent<HTMLElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    setStyle({
-      "--mx": `${((e.clientX - r.left) / r.width) * 100}%`,
-      "--my": `${((e.clientY - r.top) / r.height) * 100}%`,
-    } as CSSProperties);
-  }, []);
-
-  return { style, onPointerMove };
-}
-
 export function Spotlight() {
   return (
     <span
@@ -153,16 +135,10 @@ export function Seal({ className = "" }: { className?: string }) {
     >
       <svg viewBox="0 0 120 120" className="seal-spin size-full">
         <defs>
-          <path
-            id="seal-path"
-            d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"
-            fill="none"
-          />
+          <path id="seal-path" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none" />
         </defs>
         <text className="fill-current text-[10.5px] font-semibold tracking-[0.32em] uppercase">
-          <textPath href="#seal-path">
-            Clarity • WinsAble • 
-          </textPath>
+          <textPath href="#seal-path">Clarity • WinsAble •</textPath>
         </text>
       </svg>
     </span>

@@ -64,7 +64,6 @@ function Index() {
       <ScrollProgress />
       <Nav />
       <main>
-
         <Hero />
         <PlatformStrip />
         <Services />
@@ -82,7 +81,6 @@ function Index() {
       <Footer />
       <CornerMeta />
       <StickyCta />
-
     </div>
   );
 }
